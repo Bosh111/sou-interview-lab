@@ -110,7 +110,7 @@ nell'output cercare il campo "query" e verificare che il valore sia "pingpong"
 
 Vagrant ci permette di costruire e gestire ambienti di macchine virtuali con un unico workflow. Per farlo, si appoggia lato provisioning su VirtualBox, VMware e tutti gli altri maggiori provider.
 Per questo progetto è stato scelto VirtualBox. 
-La comodità è che la configurazione dell'ambiente avviene tutta nel Vagrantfile, dove si indicano che nodi si vuole creare e che software installare su di essi.
+La comodità è che la configurazione dell'ambiente avviene tutta nel Vagrantfile, dove si indicano che nodi si vogliono creare e che software installare su di essi.
 La persona che vorrà replicare l'ambiente sul proprio pc, dovrà solamente scaricare il Vagrantfile ed eseguire "vagrant up" per ritrovarsi tutte le VM pronte all'utilizzo. 
 In questo progetto sono stati scelti ubuntu/bionic64 come VagrantBox e Docker come software per la gestione dei container sui nodi.
 Per la gestione del "pingpong" sui due nodi, è stato usato uno script in bash molto lineare.
