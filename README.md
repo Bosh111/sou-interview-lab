@@ -22,12 +22,18 @@ Vagrant.configure("2") do |config|
 #chiamiamo il primo nodo "ping". La variabile locale "node 1" è usata per configurarlo.
 
   config.vm.define "ping" do |node1|
+  
     #Indichiamo il Vagrant box da utilizzare. E' un pacchetto contenente un immagine di SO base.                    
+    
     node1.vm.box = "ubuntu/bionic64"
+    
     #Definiamo che la VM usi private network con DHCP. In questo caso un IP è assegnato automaticamente.
     #La VM potrà comunicare con l'host e tutte le altre VM, ma non con il pubblico.
+    
     node1.vm.network "private_network", type: "dhcp" 
+    
     #Infine si indica di installare docker sul nodo. "provision" permette di definire software da installare sul nodo una volta creato.
+    
     node1.vm.provision "docker"                         
   end                                                    
 
@@ -49,7 +55,9 @@ end
 #nome che vogliamo dare al nostro Docker container
 
 CONTAINER_NAME="Ping_Pong"
+
 #nome Docker image che vogliamo utilizzare                                                      
+
 IMAGE_NAME="ealen/echo-server"
 
 #funzione per startare il container su un nodo dato. Pull immagine richiesta, mappatura porta 3000 dell'host come la 80 del container.
@@ -141,3 +149,4 @@ Di seguito ho voluto inserire la serie di step che sono stati eseguiti per la ri
 7) Test2 --> OK
 8) Stesura README.md
 9) Creazione repo Github & Push
+----------
