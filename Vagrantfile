@@ -11,4 +11,3 @@ Vagrant.configure("2") do |config|
     node2.vm.provision "docker"
   end
 end
-

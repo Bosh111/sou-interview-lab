@@ -21,14 +21,14 @@ cleanup() {
   exit 0
 }
 
-# Set up trap to catch SIGINT (Ctrl + C) and run the cleanup function
+#Trap ctrl+C
 trap cleanup SIGINT
 
 while true; do
   echo "Starting container on node ping"
   start_container "ping"
   echo "Started container on ping"
-  sleep 15
+  sleep 60
 
   echo "Stopping container on node ping"
   stop_container "ping"
@@ -37,7 +37,7 @@ while true; do
   echo "Starting container on node pong"
   start_container "pong"
   echo "Started container on pong"
-  sleep 15
+  sleep 60
 
   echo "Stopping container on node pong"
   stop_container "pong"
