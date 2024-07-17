@@ -76,7 +76,7 @@ stop_container() {
  
 #dopo la prima fase di test, mi sono accorto che nel caso lo script venisse fermato in qualsiasi fase, tranne quella di stop di un container, facendo partire
 #nuovamente lo script saremmo incappati in errore perchè il container risulta già esistente su uno dei due nodi.  
-#di consguenza è stata creata la funzione cleanup, che viene trigerata quando viene stoppato lo script con ctrl+C. Semplicemente va a rimuovere il container
+/n#di consguenza è stata creata la funzione cleanup, che viene trigerata quando viene stoppato lo script con ctrl+C. Semplicemente va a rimuovere il container
 #su entrambi i nodi. Anche qui "> /dev/null" è stato inserito per pulire l'output in console.
 
 cleanup() {
@@ -115,23 +115,21 @@ done
 ----------Come Testare la soluzione----------
 
 Necessario:
--Vagrant
--VirtualBox (o simili).
--IP dei due nodi ping e pong. Può essere estratto dall'output di questo comando: vagrant ssh <ping o pong> -c "ip a"  
+Vagrant - VirtualBox (o simili) - IP dei due nodi ping e pong. Può essere estratto dall'output di questo comando: vagrant ssh <ping o pong> -c "ip a"  
     
 Comandi per test:
-    cd "cartella dove sono stati scaricati i file"
-    vagrant up
-    ./container_switch.sh (ctrl+C quando si vuole fermare l'esecuzione)
+cd "cartella dove sono stati scaricati i file"
+vagrant up
+./container_switch.sh (ctrl+C quando si vuole fermare l'esecuzione)
 
 Test in un altra shell:
-    curl <ip ping o pong>:3000/param?query=pingpong
-    nell'output cercare il campo "query" e verificare che il valore sia "pingpong" 
+curl <ip ping o pong>:3000/param?query=pingpong
+nell'output cercare il campo "query" e verificare che il valore sia "pingpong" 
 
 ----------Commenti progetto----------
 
 Vagrant ci permette di costruire e gestire ambienti di macchine virtuali con un unico workflow. Per farlo, si appoggia lato provisioning su VirtualBox,
-VMware e tutti gli altri maggiori provider, in questo progetto è stato scelto VirtualBox. 
+VMware e tutti gli altri maggiori provider. Per questo progetto è stato scelto VirtualBox. 
 La comodità è che la configurazione dell'ambiente avviene tutta nel Vagrantfile, dove si indicano che nodi si vuole creare e che software installare su di
 essi. La persona che vorrà replicare l'ambiente sul proprio pc, dovrà solamente scaricare il Vagrantfile ed eseguire "vagrant up" per ritrovarsi tutte le VM
 pronte all'utilizzo. In questo progetto è stato scelto come VagrantBox ubuntu/bionic64 e Docker come software per la gestione dei container sui nodi.
