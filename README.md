@@ -74,10 +74,7 @@ stop_container() {
   vagrant ssh $node -c "docker stop $CONTAINER_NAME && docker rm $CONTAINER_NAME > /dev/null""
 }
  
-#dopo la prima fase di test, mi sono accorto che nel caso lo script venisse fermato in qualsiasi fase, tranne quella di stop di un container, facendo partire
-#nuovamente lo script saremmo incappati in errore perchè il container risulta già esistente su uno dei due nodi.  
-/n#di consguenza è stata creata la funzione cleanup, che viene trigerata quando viene stoppato lo script con ctrl+C. Semplicemente va a rimuovere il container
-#su entrambi i nodi. Anche qui "> /dev/null" è stato inserito per pulire l'output in console.
+#dopo la prima fase di test, mi sono accorto che nel caso lo script venisse fermato in qualsiasi fase, tranne quella di stop di un container, facendo partire nuovamente lo script saremmo incappati in errore perchè il container risulta già esistente su uno dei due nodi.Di consguenza è stata creata la funzione cleanup, che viene trigerata quando viene stoppato lo script con ctrl+C. Semplicemente va a rimuovere il container su entrambi i nodi. Anche qui "> /dev/null" è stato inserito per pulire l'output in console.
 
 cleanup() {
   echo "Stopping and removing containers on Ping and Pong"
