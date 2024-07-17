@@ -10,13 +10,14 @@ start_container() {
 
 stop_container() {
   local node=$1
-  vagrant ssh $node -c "docker stop $CONTAINER_NAME && docker rm $CONTAINER_NAME"
+  vagrant ssh $node -c "docker stop $CONTAINER_NAME > /dev/null && docker rm $CONTAINER_NAME > /dev/null"
 }
 
 cleanup() {
   echo "Stopping and removing containers on Ping and Pong"
-  stop_container "Ping"
-  stop_container "Pong"
+  stop_container "ping" > /dev/null
+  stop_container "pong" > /dev/null
+  echo "Containers stopped :)"
   exit 0
 }
 
@@ -24,18 +25,21 @@ cleanup() {
 trap cleanup SIGINT
 
 while true; do
-  echo "Starting container on Ping"
-  start_container "Ping"
-  sleep 60
+  echo "Starting container on node ping"
+  start_container "ping"
+  echo "Started container on ping"
+  sleep 15
 
-  echo "Stopping container on Ping"
-  stop_container "Ping"
+  echo "Stopping container on node ping"
+  stop_container "ping"
+  echo "Container stopped"
 
-  echo "Starting container on Pong"
-  start_container "Pong"
-  sleep 60
+  echo "Starting container on node pong"
+  start_container "pong"
+  echo "Started container on pong"
+  sleep 15
 
-  echo "Stopping container on Pong"
-  stop_container "Pong"
+  echo "Stopping container on node pong"
+  stop_container "pong"
+  echo "Container stopped"
 done
-
