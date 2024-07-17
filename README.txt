@@ -9,7 +9,7 @@ In questo README troverete:
 
 ----------Richiesta e Riluzione----------
 
-Richiesta: Creare un progetto Vagrant in cui due nodi Linux, con docker, si alternano ogni 60 secondi nell'eseguire il seguente container https://hub.docker com/r/ealen/echo-server.
+Richiesta: Creare un progetto Vagrant in cui due nodi Linux, con docker, si alternano ogni 60 secondi nell'eseguire il seguente container https://hub.docker.com/r/ealen/echo-server.
 
 Risoluzione: sono stati identificati 2 step per risolvere la richiesta:
 
