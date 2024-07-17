@@ -14,6 +14,7 @@ Richiesta: Creare un progetto Vagrant in cui due nodi Linux, con docker, si alte
 Risoluzione: sono stati identificati 2 step per risolvere la richiesta:
 
 1) creazione di un progetto vagrant per creare i due nodi--> Vagrantfile dove indicare come creare i due nodi, di seguito commentato:
+
 #il 2 specifica la configuration version,"do config" definisce la configurazione dell'ambiente Vagrant
 Vagrant.configure("2") do |config|
   #chiamiamo il primo nodo "ping". La variabile locale "node 1" è usata per configurarlo.
