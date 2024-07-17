@@ -16,8 +16,11 @@ Risoluzione: sono stati identificati 2 step per risolvere la richiesta:
 1) creazione di un progetto vagrant per creare i due nodi--> Vagrantfile dove indicare come creare i due nodi, di seguito commentato:
 
 #il 2 specifica la configuration version,"do config" definisce la configurazione dell'ambiente Vagrant
+
 Vagrant.configure("2") do |config|
+
 #chiamiamo il primo nodo "ping". La variabile locale "node 1" è usata per configurarlo.
+
   config.vm.define "ping" do |node1|
     #Indichiamo il Vagrant box da utilizzare. E' un pacchetto contenente un immagine di SO base.                    
     node1.vm.box = "ubuntu/bionic64"
@@ -29,6 +32,7 @@ Vagrant.configure("2") do |config|
   end                                                    
 
 #Procedimento analogo per il secondo nodo, l'unica differenza è il nome: pong
+
   config.vm.define "pong" do |node2|
     node2.vm.box = "ubuntu/bionic64"
     node2.vm.network "private_network", type: "dhcp"
@@ -37,9 +41,13 @@ Vagrant.configure("2") do |config|
 end
 
 2) creazione di uno script in bash che alterni l'esecuzione del container sui due nodi. Di seguito lo script commentato:
+
 #shebang - lo script deve essere runnato con bash shell
+
 #!/bin/bash
+
 #nome che vogliamo dare al nostro Docker container
+
 CONTAINER_NAME="Ping_Pong"
 #nome Docker image che vogliamo utilizzare                                                      
 IMAGE_NAME="ealen/echo-server"
